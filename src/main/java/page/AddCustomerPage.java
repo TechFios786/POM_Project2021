@@ -14,15 +14,24 @@ import org.testng.Assert;
 public class AddCustomerPage extends BasePage {
 
 	WebDriver driver;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"page-wrapper\"]/div[3]/div[1]/div/div/div/div[1]/h5") 
+	@FindBy(how = How.XPATH, using = "//h5[normalize-space()='Add Contact']") 
 	WebElement ADD_CONTACT_HEADER_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"account\"]") WebElement ADD_CONTACT_FULLNAME_ELEMENT;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"cid\"]") WebElement COMPANY_DRPDOWN_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"cid\"]") WebElement COMPANY_NAME_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"email\"]") WebElement EMAIL_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@id='phone']") WebElement PHONE_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@id='address']") WebElement ADDRESS_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@id='city']") WebElement CITY_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@id='state']") WebElement STATE_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@id='zip']") WebElement ZIP_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"select2-country-container\"]") WebElement COUNTRY_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//input[@role='textbox']") WebElement TAG_ELEMENT;
+	
+	@FindBy(how = How.XPATH, using = "//button[@id='submit']") WebElement SUBMIT_ELEMENT;
 	
 	
-	public void verifyAddContantPage() {
-		
+	public void verifyAddContantPage() throws InterruptedException {
+		Thread.sleep(3000);
 		//waitForElement(driver, 6, ADD_CONTACT_HEADER_ELEMENT);
 		Assert.assertEquals(ADD_CONTACT_HEADER_ELEMENT.getText(),"Add Contact", "wrong page");
 		
@@ -36,7 +45,7 @@ public class AddCustomerPage extends BasePage {
 	public void insertcompanyDropDown(String company) {
 		//since its a drop down we need to use the Class "select"
 		
-		selectFromDropDown(COMPANY_DRPDOWN_ELEMENT, company);
+		selectFromDropDown(COMPANY_NAME_ELEMENT, company);
 	}
 
 	public void insertEmail(String email) {
@@ -44,6 +53,32 @@ public class AddCustomerPage extends BasePage {
 		
 		
 	}
+	public void insertPhone(String phone) {
+		PHONE_ELEMENT.sendKeys(phone);
+	}
 	
+	public void insertAddress(String address) {
+		ADDRESS_ELEMENT.sendKeys(address);
+	}
+	public void insertCity (String city) {
+		CITY_ELEMENT.sendKeys(city);
+	}
 
+	public void insertState(String state) {
+		STATE_ELEMENT.sendKeys(state);
+	}
+	public void insertZip(String zip) {
+		ZIP_ELEMENT.sendKeys(zip);
+	}
+	public void insertCountry(String country) {
+	
+		selectFromDropDown(COUNTRY_ELEMENT, country);
+		
+	}
+	public void insertTag(String tag) {
+		TAG_ELEMENT.sendKeys(tag);
+	}
+	public void clickSubmitButton() {
+		SUBMIT_ELEMENT.click();
+	}
 }

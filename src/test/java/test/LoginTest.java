@@ -26,7 +26,8 @@ public class LoginTest {
 		DashboardPage dashboard = PageFactory.initElements(driver, DashboardPage.class);
 		dashboard.verifyDashboardheader();
 		dashboard.clickCustomerButton();
-		BrowserFactory.tearDown();
+		dashboard.clickAddCustomerButton();
+		//BrowserFactory.tearDown();
 		
 	}
 

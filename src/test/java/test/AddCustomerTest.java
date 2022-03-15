@@ -15,7 +15,7 @@ public class AddCustomerTest {
 		String userName = "demo@techfios.com";
 		String password = "abc123";
 	@Test
-	public void validUserShouldBeAbleToCreateCustomer() {
+	public void validUserShouldBeAbleToCreateCustomer() throws InterruptedException {
 		driver= BrowserFactory.init();
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 		loginPage.insertUserName(userName);
@@ -32,6 +32,14 @@ public class AddCustomerTest {
 		addCustomerPage.insertFullName("Selenium Sept2021");
 		addCustomerPage.insertcompanyDropDown("Techfios");
 		addCustomerPage.insertEmail("abc@techfios.com");
+		addCustomerPage.insertPhone("7572321563");
+		addCustomerPage.insertAddress("texas-Fort Worth");
+		addCustomerPage.insertCity("Kabul");
+		addCustomerPage.insertState("Texas");
+		addCustomerPage.insertZip("76179");
+		addCustomerPage.insertCountry("Uganda");
+		addCustomerPage.insertTag("tag");
+		addCustomerPage.clickSubmitButton();
 	}
 
 }
